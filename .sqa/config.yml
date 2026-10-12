@@ -1,0 +1,72 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: fix/updatego
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/cessda/cessda.cdc.aggregator.doc-store:
+      branch: main
+      repo: https://github.com/cessda/cessda.cdc.aggregator.doc-store
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.doc-store git:
+        commands:
+        - /usr/bin/env sh .sqa/script.peach_delighted_dragonfly.sh
+        container: qc.acc_clove_rugged_moth
+  QC.Doc:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.doc-store find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.paprika_eager_nymph.sh
+        container: qc.doc_cerise_dizzy_antelope
+      github.com/cessda/cessda.cdc.aggregator.doc-store git:
+        commands:
+        - /usr/bin/env sh .sqa/script.frost_mindful_caiman.sh
+        container: qc.doc_emerald_sociable_kookaburra
+      github.com/cessda/cessda.cdc.aggregator.doc-store markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.periwinkle_dramatic_piranha.sh
+        container: qc.doc_sunset_loving_anaconda
+  QC.Lic:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.doc-store licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.linen_eccentric_toad.sh
+        container: qc.lic_pineapple_bold_hippopotamus
+  QC.Sec:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.doc-store bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.umber_observant_serval.sh
+        container: qc.sec_harlequin_frugal_armadillo
+  QC.Sty:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.doc-store flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.flint_resourceful_snail.sh
+        container: qc.sty_kiwi_loving_jellyfish
+      github.com/cessda/cessda.cdc.aggregator.doc-store hadolint:
+        commands:
+        - /usr/bin/env sh .sqa/script.verdant_thankful_wolverine.sh
+        container: qc.sty_cinnabar_scrappy_kookaburra
+      github.com/cessda/cessda.cdc.aggregator.doc-store jsonlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.brown_lucky_moth.sh
+        container: qc.sty_wisteria_humorous_pangolin
+  QC.Uni:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.doc-store pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.raspberry_dizzy_ibex.sh
+        container: qc.uni_blush_vigilant_dragonfly
+  QC.Ver:
+    repos:
+      github.com/cessda/cessda.cdc.aggregator.doc-store get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.raspberry_sarcastic_cockatoo.sh
+        container: qc.ver_raven_harmonious_frog
+timeout: 5400
